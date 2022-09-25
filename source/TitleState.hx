@@ -386,7 +386,7 @@ class TitleState extends MusicBeatState
 		}*/
 		//curSoniFrame = soni.animation.curAnim.curFrame;
 
-		#if mobile
+		#if android 
 		for (touch in FlxG.touches.list)
 		{
 			if (touch.justPressed)
