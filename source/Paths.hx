@@ -243,13 +243,11 @@ class Paths
 	
 	static public function getTextFromFile(key:String, ?ignoreMods:Bool = false):String
 	{
-		
-		
-		
+		#if sys
 		#if MODS_ALLOWED
 		if (!ignoreMods && FileSystem.exists(modFolders(key)))
 			return File.getContent(modFolders(key));
-		
+		#end
 
 		if (FileSystem.exists(getPreloadPath(key)))
 			return File.getContent(getPreloadPath(key));
@@ -267,7 +265,7 @@ class Paths
 			if (FileSystem.exists(levelPath))
 				return File.getContent(levelPath);
 		}
-		
+		#end
 		return Assets.getText(getPath(key, TEXT));
 	}
 
@@ -378,7 +376,7 @@ class Paths
 		// trace(gottenPath);
 		if(!currentTrackedSounds.exists(gottenPath)) 
 		#if MODS_ALLOWED
-			currentTrackedSounds.set(gottenPath, Sound.fromFile(gottenPath));
+			currentTrackedSounds.set(gottenPath, Sound.fromFile('./' + gottenPath));
 		#else
 			currentTrackedSounds.set(gottenPath, OpenFlAssets.getSound(getPath('$path/$key.$SOUND_EXT', SOUND, library)));
 		#end
