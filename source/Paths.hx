@@ -250,7 +250,7 @@ class Paths
 		#end
 
 		
-			return File.getContent(getPreloadPath(key));
+			
 
 		if (currentLevel != null)
 		{
@@ -258,12 +258,12 @@ class Paths
 			if(currentLevel != 'shared') {
 				levelPath = getLibraryPathForce(key, currentLevel);
 				
-					return File.getContent(levelPath);
+					
 			}
 
 			levelPath = getLibraryPathForce(key, 'shared');
 			
-				return File.getContent(levelPath);
+				
 		}
 		#end
 		return Assets.getText(getPath(key, TEXT));
