@@ -1817,7 +1817,7 @@ class PlayState extends MusicBeatState
 		#if VIDEOS_ALLOWED
 		var foundFile:Bool = false;
 		var fileName:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.' + Paths.VIDEO_EXT); #else ''; #end
-		#if sys
+		#if windows 
 		if(FileSystem.exists(fileName)) {
 			foundFile = true;
 		}
@@ -1825,7 +1825,7 @@ class PlayState extends MusicBeatState
 
 		if(!foundFile) {
 			fileName = Paths.video(name);
-			#if sys
+			#if windows 
 			if(FileSystem.exists(fileName)) {
 			#else
 			if(OpenFlAssets.exists(fileName)) {
