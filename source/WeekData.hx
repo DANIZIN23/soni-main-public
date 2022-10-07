@@ -137,7 +137,7 @@ class WeekData {
 					if(week != null) {
 						var weekFile:WeekData = new WeekData(week);
 
-						#if MODS_ALLOWED
+						#if windows
 						if(j >= originalLength) {
 							weekFile.folder = directories[j].substring(Paths.mods().length, directories[j].length-1);
 						}
@@ -189,7 +189,7 @@ class WeekData {
 				var weekFile:WeekData = new WeekData(week);
 				if(i >= originalLength)
 				{
-					#if MODS_ALLOWED
+					#if windows 
 					weekFile.folder = directory.substring(Paths.mods().length, directory.length-1);
 					#end
 				}
