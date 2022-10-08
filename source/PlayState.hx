@@ -1697,7 +1697,7 @@ class PlayState extends MusicBeatState
 	public function addShaderToCamera(cam:String,effect:ShaderEffect){//STOLE FROM ANDROMEDA
 	  
 	  
-	  
+	  #if windows
 		switch(cam.toLowerCase()) {
 			case 'camhud' | 'hud':
 					camHUDShaders.push(effect);
@@ -1734,11 +1734,12 @@ class PlayState extends MusicBeatState
 				
 				
 		}
-	  
+ 	  
 	  
 	  
 	  
   }
+#else
 
   public function removeShaderFromCamera(cam:String,effect:ShaderEffect){
 	  
@@ -1769,9 +1770,9 @@ class PlayState extends MusicBeatState
 		
 	  
   }
+	 #end  
 	
-	
-	
+	#if windows
   public function clearShaderFromCamera(cam:String){
 	  
 	  
@@ -1792,7 +1793,7 @@ class PlayState extends MusicBeatState
 		
 	  
   }
-	
+	 #end
 	function startCharacterPos(char:Character, ?gfCheck:Bool = false) {
 		if(gfCheck && char.curCharacter.startsWith('gf')) { //IF DAD IS GIRLFRIEND, HE GOES TO HER POSITION
 			char.setPosition(GF_X, GF_Y);
@@ -1807,7 +1808,7 @@ class PlayState extends MusicBeatState
 		#if VIDEOS_ALLOWED
 		var foundFile:Bool = false;
 		var fileName:String = #if MODS_ALLOWED Paths.modFolders('videos/' + name + '.' + Paths.VIDEO_EXT); #else ''; #end
-		#if sys
+		#if windows 
 		if(FileSystem.exists(fileName)) {
 			foundFile = true;
 		}
@@ -1815,7 +1816,7 @@ class PlayState extends MusicBeatState
 
 		if(!foundFile) {
 			fileName = Paths.video(name);
-			#if sys
+			#if windows 
 			if(FileSystem.exists(fileName)) {
 			#else
 			if(OpenFlAssets.exists(fileName)) {
@@ -2293,7 +2294,7 @@ class PlayState extends MusicBeatState
 
 		var songName:String = Paths.formatToSongPath(SONG.song);
 		var file:String = Paths.json(songName + '/events');
-		#if MODS_ALLOWED
+		#if windows 
 		if (FileSystem.exists(Paths.modsJson(songName + '/events')) || FileSystem.exists(file)) {
 		#else
 		if (OpenFlAssets.exists(file)) {
