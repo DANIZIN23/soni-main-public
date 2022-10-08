@@ -1741,7 +1741,7 @@ class PlayState extends MusicBeatState
   }
 #else
 
-  public function removeShaderFromCamera(cam:String,effect:ShaderEffect){
+  
 	  
 	  
 		switch(cam.toLowerCase()) {
