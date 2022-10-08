@@ -1,6 +1,6 @@
 package;
 
-#if windows 
+#if MODS_ALLOWED
 import sys.io.File;
 import sys.FileSystem;
 #end
@@ -9,7 +9,7 @@ import openfl.utils.Assets as OpenFlAssets;
 import haxe.Json;
 import haxe.format.JsonParser;
 
-#if windows 
+#if sys
 import sys.io.File;
 #end
 
